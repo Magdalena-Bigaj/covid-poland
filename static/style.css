@@ -1,0 +1,50 @@
+
+* {
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html {
+    background-color:#1D3557;
+    color:#555;
+    font-family: 'Lato','Arial',sans-serif;
+    font-size= 20px;
+    font-weight=300;
+    text-rendering:optimizeLegibility;
+}
+
+.row {
+    max-width:1140px;
+    margin:0 auto;
+}
+
+header {
+    background-color: #14213D;
+    height: 15vh;
+
+}
+
+
+section {
+    margin: 3px;
+
+}
+h1 {
+    margin-top:0;
+    margin-bottom:0px;
+    padding:20px;
+    color: #838C92;
+    font-size:200%;
+    font-weight:300;
+    letter-spacing: 1px;
+    word-spacing:5px;
+    text-align: center;
+
+
+}
+
+p {
+    display: inline- block;
+}
+

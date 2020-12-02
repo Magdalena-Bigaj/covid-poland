@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+    <link rel="stylesheet" type="text/css" href="static/normalize.css">
+    <link rel="stylesheet" type="text/css" href="static/grid.css">
+    <link rel="stylesheet" type="text/css" href="static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet" type="text/css">
+    <meta charset="UTF-8">
+    <title>Covid Poland</title>
+    <script type="text/javascript" src={{cdn_js | safe}}></script>
+</head>
+<body>
+    <header>
+        <div class="margin:20px;">
+            <h1>Covid statistics. Poland</h1>
+        </div>
+    </header>
+    <main>
+        <div>
+            <p style="margin:15px;">Source: https://www.ecdc.europa.eu/en</p>
+            <hr>
+        </div>
+        <div>
+            <div style="width: 70%; display: flex; float: left; text-align: left;">
+                {{script1 | safe}}
+                {{div1 | safe}}
+            </div>
+            <div style="display: flex; float: left; align-self: center;">
+                <p style="margin-top:60px; display: flex;  text-align: center; color: #d90429; font-size:300%;">TOTAL CASES<br>{{count_cases | safe}}</p>
+            </div>
+            <hr>
+        </div>
+
+
+
+    </main>
+    <footer>
+
+    </footer>
+
+
+</body>
+</html>
