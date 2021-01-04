@@ -5,7 +5,6 @@ import requests
 import datetime as dt
 from datetime import timedelta
 import pandas as pd
-from bokeh.io import output_file
 from bokeh.plotting import figure, show
 from bokeh.io import output_file, output_notebook
 from bokeh.plotting import figure, show
@@ -39,7 +38,7 @@ def timed_lru_cache(seconds: int, maxsize: int = 128):
     return wrapper_cache
 
 
-@timed_lru_cache(6000)
+@timed_lru_cache(43200)
 # @functools.lru_cache()
 def read_cases():
     csv_data = pd.read_csv("https://opendata.ecdc.europa.eu/covid19/casedistribution/csv")
@@ -61,24 +60,24 @@ def index():
     y_range_margin = 200
 
     p = figure(title='Covid.Poland', plot_width=800, plot_height=400, background_fill_color= '#edf2f4', border_fill_color= '#D9E4E8',
-               y_range=(0, max(csv_data_poland['cases'] + y_range_margin)),
+               y_range=(0, max(csv_data_poland['cases_weekly'] + y_range_margin)),
                x_range=(r[-1], r[0]),
                x_axis_label='time', x_axis_type='datetime')
 
-    p.vbar(csv_data_poland['dateRep'], top=csv_data_poland['cases'], color='#003049', width=timedelta(days=0.8),
-           legend_label='cases')
+    p.vbar(csv_data_poland['dateRep'], top=csv_data_poland['cases_weekly'], color='#003049', width=timedelta(weeks=0.8),
+           legend_label='cases_weekly')
 
-    p.extra_y_ranges = {"deaths": Range1d(start=0, end=max(csv_data_poland['deaths'] + y_range_margin))}
-    p.line(csv_data_poland['dateRep'], csv_data_poland['deaths'], y_range_name='deaths', color='#d62828',
-           legend_label='deaths')
-    p.add_layout(LinearAxis(y_range_name="deaths"), 'right')
+    p.extra_y_ranges = {"deaths_weekly": Range1d(start=0, end=max(csv_data_poland['deaths_weekly'] + y_range_margin))}
+    p.line(csv_data_poland['dateRep'], csv_data_poland['deaths_weekly'], y_range_name='deaths_weekly', color='#d62828',
+           legend_label='deaths_weekly')
+    p.add_layout(LinearAxis(y_range_name="deaths_weekly"), 'right')
 
     p.legend.location = 'top_left'
 
     script1, div1 = components(p)
     cdn_js = CDN.js_files[0]
 
-    count_cases=("{:,d}".format(int(sum(csv_data_poland['cases']))))
+    count_cases=("{:,d}".format(int(sum(csv_data_poland['cases_weekly']))))
 
     return render_template("index.html", script1=script1, div1=div1, cdn_js=cdn_js, count_cases= count_cases)
 

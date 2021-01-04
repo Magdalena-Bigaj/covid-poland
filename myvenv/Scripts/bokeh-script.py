@@ -1,4 +1,4 @@
-#!d:\programming\covid_bokeh\myvenv\scripts\python.exe
+#!d:\repos\covid_bokeh\myvenv\scripts\python.exe
 # EASY-INSTALL-ENTRY-SCRIPT: 'bokeh==2.2.3','console_scripts','bokeh'
 import re
 import sys
